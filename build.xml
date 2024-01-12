@@ -1,0 +1,39 @@
+<project name="HelloWorld" default="run"
+    xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <!-- Ivy settings -->
+    <target name="resolve" description="Retrieve dependencies with Ivy">
+        <ivy:retrieve/>
+    </target>
+
+    <!-- Set the classpath using Ivy -->
+    <path id="classpath">
+        <fileset dir="lib" includes="*.jar"/>
+    </path>
+
+    <!-- Compile the Java code -->
+    <target name="compile" description="Compile Java sources" depends="resolve">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" includeantruntime="false">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <!-- Run the application -->
+    <target name="run" depends="compile">
+        <java classname="Main" fork="true" classpath="build/classes">
+            <classpath refid="classpath"/>
+        </java>
+    </target>
+
+    <!-- Clean up build artifacts -->
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+
+    <target name="show-version">
+        <echo>Java Version: ${ant.java.version}</echo>
+        <echo>Java Home: ${java.home}</echo>
+    </target>
+
+</project>

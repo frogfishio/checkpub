@@ -1,0 +1,9 @@
+<ivy-module version="2.0">
+    <info organisation="your-organisation" module="hello-world"/>
+    <dependencies>
+        <!-- <dependency org="org.w3c" name="epubcheck" rev="5.1.0" /> -->
+        <dependency org="org.xmlresolver" name="xmlresolver" rev="4.4.3" />
+        <dependency org="com.sparkjava" name="spark-core" rev="2.9.4" />
+        <dependency org="org.json" name="json" rev="20231013" />
+    </dependencies>
+</ivy-module>
